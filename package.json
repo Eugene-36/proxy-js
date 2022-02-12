@@ -2,7 +2,9 @@
   "name": "proxy",
   "version": "1.0.0",
   "main": "index.js",
+  "proxy": "http://localhost:8000",
   "scripts": {
+    "dev": "concurrently --kill-others \"nodemon node index.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,11 +20,14 @@
   "dependencies": {
     "express": "^4.17.2",
     "axios": "^0.25.0",
+    "concurrently": "^7.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "nodemon": "^2.0.15",
     "path": "^0.12.7"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "http-proxy-middleware": "^2.0.3"
+  },
   "description": ""
 }

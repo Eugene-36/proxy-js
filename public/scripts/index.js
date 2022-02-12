@@ -9,7 +9,7 @@ let wordle;
 
 async function getWordle() {
   try {
-    let response = await fetch('http://localhost:8000/word');
+    let response = await fetch('/word');
     let singleWord = await response.json();
 
     wordle = singleWord.toUpperCase();
@@ -26,9 +26,7 @@ async function getDefinition(searchingWord) {
   console.log('searchingWord', searchingWord.toLowerCase());
   let meddilware = searchingWord.toLowerCase();
   try {
-    let response = await fetch(
-      `http://localhost:8000/definition/?word=${searchingWord}`
-    );
+    let response = await fetch(`/definition/?word=${searchingWord}`);
     let definition = await response.json();
 
     console.log('definition', response);
@@ -153,7 +151,7 @@ const checkRow = () => {
   const guess = guessRows[currentRow].join('');
 
   if (currentTile > 4) {
-    fetch(`http://localhost:8000/check/?word=${guess}`)
+    fetch(`/check/?word=${guess}`)
       .then((response) => response.json())
       .then((json) => {
         if (json == 'Entry word not found') {

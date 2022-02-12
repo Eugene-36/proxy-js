@@ -6,6 +6,8 @@ const cors = require('cors');
 const path = require('path');
 require('dotenv').config();
 
+const { createProxyMiddleware } = require('http-proxy-middleware');
+
 const app = express();
 app.use(cors());
 
@@ -71,7 +73,7 @@ app.get('/check', (req, res) => {
 app.get('/definition', (req, res) => {
   const word = req.query.word.toLowerCase();
 
-  console.log('word с Бэка', req);
+  console.log('word с Бэка', word);
   const options = {
     method: 'GET',
     url: 'https://twinword-word-graph-dictionary.p.rapidapi.com/definition/',
