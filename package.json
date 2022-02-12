@@ -2,7 +2,7 @@
   "name": "proxy",
   "version": "1.0.0",
   "main": "index.js",
-  "proxy": "http://localhost:8000",
+  "proxy": "http://localhost:8000/public/views/",
   "scripts": {
     "dev": "concurrently --kill-others \"nodemon node index.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
