@@ -13,7 +13,7 @@ async function getWordle() {
     let singleWord = await response.json();
 
     wordle = singleWord.toUpperCase();
-    console.log('wordle', wordle);
+    console.log('wordle', response);
     getDefinition(wordle);
   } catch (error) {
     console.log('messgae error', error);
