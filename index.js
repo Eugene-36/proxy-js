@@ -24,6 +24,14 @@ app.set('view engine', 'jade');
 // public route will be used to server the static content
 app.use('/public', express.static('public'));
 
+app.use(
+  '/api',
+  createProxyMiddleware({
+    target: BASI_URL,
+    changeOrigin: true,
+  })
+);
+
 app.get('/word', (req, res) => {
   const options = {
     method: 'GET',
