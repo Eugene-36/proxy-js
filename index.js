@@ -4,6 +4,7 @@ const axios = require('axios');
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const { BASI_URL } = require('./public/config/config');
 require('dotenv').config();
 
 const { createProxyMiddleware } = require('http-proxy-middleware');
