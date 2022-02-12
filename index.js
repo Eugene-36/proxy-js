@@ -14,15 +14,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.text());
 
-app.set("views", path.join(__dirname, "/public/views"));
+app.set('views', path.join(__dirname, '/public/views'));
 
-
-// set jade as view engine. 
-app.set("view engine", "jade");
+// set jade as view engine.
+app.set('view engine', 'jade');
 
 // public route will be used to server the static content
-app.use("/public", express.static("public"));
-
+app.use('/public', express.static('public'));
 
 app.get('/word', (req, res) => {
   const options = {
@@ -62,7 +60,7 @@ app.get('/check', (req, res) => {
   axios
     .request(options)
     .then((response) => {
-      console.log(response.data);
+      //console.log(response.data);
       res.json(response.data.result_msg);
     })
     .catch((error) => {
@@ -87,7 +85,7 @@ app.get('/definition', (req, res) => {
   axios
     .request(options)
     .then((response) => {
-      console.log('response.data.meaning', response);
+      //console.log('response.data.meaning', response);
       res.json(
         response.data.meaning.noun ||
           response.data.meaning.adjective ||
@@ -98,13 +96,5 @@ app.get('/definition', (req, res) => {
       console.error(error);
     });
 });
-
-// app.get('*', (req, res) => {
-//   res.sendFile(
-//     path.resolve(__dirname, 'D:/_E/Projects/wordle-clone-js', 'index.html')
-//   );
-// });
-
-// app.use(express.static(path.resolve(__dirname, 'build')));
 
 app.listen(PORT, () => console.log('Server running on port ' + PORT));
