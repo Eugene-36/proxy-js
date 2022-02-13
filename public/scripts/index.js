@@ -3,8 +3,6 @@ const keyboard = document.querySelector('.key-container');
 const messageDisplay = document.querySelector('.message-container');
 const elMsg = document.querySelector('.message-clue-container');
 
-console.log('keyboard', keyboard);
-
 let wordle;
 
 async function getWordle() {
@@ -13,7 +11,7 @@ async function getWordle() {
     let singleWord = await response.json();
 
     wordle = singleWord.toUpperCase();
-    console.log('wordle', response);
+
     getDefinition(wordle);
   } catch (error) {
     console.log('messgae error', error);
@@ -23,13 +21,10 @@ async function getWordle() {
 getWordle();
 
 async function getDefinition(searchingWord) {
-  console.log('searchingWord', searchingWord.toLowerCase());
-  let meddilware = searchingWord.toLowerCase();
   try {
     let response = await fetch(`/definition/?word=${searchingWord}`);
     let definition = await response.json();
 
-    console.log('definition', response);
     const result = definition.replaceAll('(nou)', '&&').toUpperCase();
     addMessageClue(result);
   } catch (error) {
